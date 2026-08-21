@@ -1,0 +1,16 @@
+name: riverpod_di
+description: The annotations for a small code generator for simple dependency injection via riverpod.
+version: 1.0.0
+repository: https://github.com/Skycoder42/riverpod_di
+
+environment:
+  sdk: ^3.13.0
+resolution: workspace
+
+dev_dependencies:
+  dart_test_tools: ^7.3.0
+
+cider:
+  link_template:
+    tag: https://github.com/Skycoder42/riverpod_di/releases/tag/riverpod_di-v%tag%
+    diff: https://github.com/Skycoder42/riverpod_di/compare/riverpod_di-v%from%...riverpod_di-v%to%

@@ -1,0 +1,12 @@
+name: riverpod_di_workspace
+
+environment:
+  sdk: ^3.13.0
+
+workspace:
+  - packages/riverpod_di
+  - packages/riverpod_di_generator
+
+dev_dependencies:
+  dart_pre_commit: ^6.1.4
+  dart_test_tools: ^7.3.0
