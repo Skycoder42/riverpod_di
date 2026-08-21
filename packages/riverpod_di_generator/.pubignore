@@ -1,0 +1,3 @@
+# Unignore
+## Generated files
+!*.g.dart
