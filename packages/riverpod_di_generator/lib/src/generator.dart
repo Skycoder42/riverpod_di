@@ -1,4 +1,5 @@
 import 'package:analyzer/dart/element/element.dart';
+import 'package:analyzer/dart/element/type.dart';
 import 'package:build/build.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_test_tools/code_gen.dart';
@@ -6,6 +7,7 @@ import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
 
+import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
 import 'types.dart';
 
@@ -32,46 +34,71 @@ class const RiverpodDiGenerator()
     return createDartCode(_buildProvider(element, reader), scoped: false);
   }
 
-  Method _buildProvider(ClassElement element, RiverDiReader reader) => Method(
-    (b) => b
-      ..name = element.name!.camel
-      ..annotations.add(reader.annotation)
-      ..returns = element.toReference()
-      ..requiredParameters.add(
-        Parameter(
-          (b) => b
-            ..name = _refRef.symbol!
-            ..type = Types.$Ref,
-        ),
-      )
-      ..lambda = true
-      ..body = _buildBody(element, reader).statement,
-  );
+  Method _buildProvider(ClassElement element, RiverDiReader reader) {
+    final (body, isAsync) = _buildBody(element, reader);
+    return Method(
+      (b) => b
+        ..name = element.name!.camel
+        ..annotations.add(reader.annotation)
+        ..returns = isAsync
+            ? Types.$FutureOr(element.toReference())
+            : element.toReference()
+        ..requiredParameters.add(
+          Parameter(
+            (b) => b
+              ..name = _refRef.symbol!
+              ..type = Types.$Ref,
+          ),
+        )
+        ..lambda = true
+        ..body = body.statement,
+    );
+  }
 
-  Expression _buildBody(ClassElement element, RiverDiReader reader) {
+  (Expression, bool) _buildBody(ClassElement element, RiverDiReader reader) {
     final type = element.toReference();
 
-    final constructor =
-        element.primaryConstructor ?? element.unnamedConstructor;
+    final annotated = element.constructors
+        .cast<ExecutableElement>()
+        .followedBy(element.methods)
+        .where((c) => c.hasProviderConstructor)
+        .toList(growable: false);
 
-    if (constructor == null) {
+    final constructorOrMethod = switch (annotated) {
+      [] => element.primaryConstructor ?? element.unnamedConstructor,
+      [final single] => single..validateProviderConstructor(),
+      _ => throw InvalidGenerationSource(
+        'Multiple constructors or methods are annotated with '
+        '$ProviderConstructor. Only a single one can be.',
+        element: element,
+      ),
+    };
+
+    if (constructorOrMethod == null) {
       throw InvalidGenerationSource(
-        'Class has no primary or unnamed constructor!',
+        'Class has no primary or unnamed constructor! '
+        'Create one or annotate another with $ProviderConstructor.',
         element: element,
       );
     }
 
-    final posArgs = constructor.formalParameters
+    final posArgs = constructorOrMethod.formalParameters
         .where((p) => p.isPositional)
         .map(_watchReference)
         .toList(growable: false);
     final namedArgs = {
-      for (final p in constructor.formalParameters.where((p) => p.isNamed))
+      for (final p in constructorOrMethod.formalParameters.where(
+        (p) => p.isNamed,
+      ))
         p.name!: _watchReference(p),
     };
 
     final noArgs = posArgs.isEmpty && namedArgs.isEmpty;
-    return switch (constructor) {
+    final invocation = switch (constructorOrMethod) {
+      MethodElement(:final name?, isStatic: true) => type.property(name)(
+        posArgs,
+        namedArgs,
+      ),
       ConstructorElement(name: final name?, isConst: true)
           when noArgs && name != 'new' =>
         type.constInstanceNamed(name, const []),
@@ -82,6 +109,14 @@ class const RiverpodDiGenerator()
         type.newInstanceNamed(name, posArgs, namedArgs),
       _ => type.newInstance(posArgs, namedArgs),
     };
+
+    if (constructorOrMethod.returnType
+        case DartType(isDartAsyncFuture: true) ||
+            DartType(isDartAsyncFutureOr: true)) {
+      return (invocation, true);
+    } else {
+      return (invocation, false);
+    }
   }
 
   Expression _watchReference(FormalParameterElement param) {

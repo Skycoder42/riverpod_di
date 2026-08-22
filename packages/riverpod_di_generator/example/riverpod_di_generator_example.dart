@@ -25,10 +25,11 @@ class BasicDefault {
   new(Basic basic);
 }
 
-// @riverDi
-// class BasicNamed {
-//   new named(Basic basic);
-// }
+@riverDi
+class BasicNamed {
+  @providerConstructor
+  new named(Basic basic);
+}
 
 @riverDi
 class Factory {
@@ -36,3 +37,35 @@ class Factory {
 }
 
 class _Factory implements Factory;
+
+@riverDi
+class FromMethod {
+  const new _();
+
+  @providerConstructor
+  static FromMethod createInstance() => const ._();
+}
+
+@riverDi
+class const Competing.primary() {
+  const factory() = Competing.primary;
+
+  @providerConstructor
+  const factory internal() = Competing.primary;
+}
+
+@riverDi
+class FromFuture {
+  const new _();
+
+  @providerConstructor
+  static Future<FromFuture> createInstance() async => const ._();
+}
+
+@riverDi
+class FromFutureOr {
+  const new _();
+
+  @providerConstructor
+  static FutureOr<FromFutureOr> createInstance() => const ._();
+}
