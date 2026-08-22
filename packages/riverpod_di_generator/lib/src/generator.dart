@@ -7,6 +7,7 @@ import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
 
+import 'readers/from_reader.dart';
 import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
 import 'types.dart';
@@ -120,7 +121,21 @@ class const RiverpodDiGenerator()
   }
 
   Expression _watchReference(FormalParameterElement param) {
-    final baseName = param.type.element?.name?.camel;
+    final fromReader = param.from;
+    final providerName =
+        fromReader.providerName(param) ?? _defaultProviderName(param);
+    final refMethod = fromReader.read ? 'read' : 'watch';
+
+    return _refRef.property(refMethod).call([
+      if (fromReader.notifier)
+        refer(providerName).property('notifier')
+      else
+        refer(providerName),
+    ]);
+  }
+
+  String _defaultProviderName(FormalParameterElement param) {
+    final baseName = param.type.element?.name;
     if (baseName == null) {
       throw InvalidGenerationSource(
         'Cannot detect default provider name from parameter type '
@@ -128,6 +143,7 @@ class const RiverpodDiGenerator()
         element: param,
       );
     }
-    return _refRef.property('watch').call([refer('${baseName}Provider')]);
+
+    return '${baseName}Provider'.camel;
   }
 }

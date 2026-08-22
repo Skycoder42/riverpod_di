@@ -69,3 +69,19 @@ class FromFutureOr {
   @providerConstructor
   static FutureOr<FromFutureOr> createInstance() => const ._();
 }
+
+@riverpod
+int externalFunc(Ref ref) => 42;
+
+@riverpod
+class ExternalNotifier extends _$ExternalNotifier {
+  @override
+  int build() => 42;
+}
+
+@riverDi
+class FromExternal(
+  @From(externalFunc) int func,
+  @From(ExternalNotifier) int clazz,
+  @From.notifier(ExternalNotifier) ExternalNotifier notifier,
+);
