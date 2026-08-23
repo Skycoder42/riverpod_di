@@ -4,7 +4,7 @@ import 'package:source_gen/source_gen.dart';
 
 import 'riverpod_reader.dart';
 
-extension RiverDiX on ClassElement {
+extension RiverDiX on Element {
   static const _typeChecker = TypeChecker.typeNamed(
     RiverDi,
     inPackage: 'riverpod_di',

@@ -10,15 +10,19 @@ extension RiverpodX on Element {
     inPackage: 'riverpod_annotation',
   );
 
-  RiverpodReader? get riverpod {
+  RiverpodReader get riverpod {
     final annotation = _typeChecker.firstAnnotationOf(this);
     final reader = ConstantReader(annotation);
-    return reader.isNull ? null : RiverpodReader(reader);
+    return RiverpodReader(reader);
   }
 }
 
 class RiverpodReader(final ConstantReader _reader) {
+  bool get exists => !_reader.isNull;
+
   String? get name => _reader.peek('name')?.stringValue;
 
-  Expression toExpression() => _reader.toExpression();
+  Expression toExpression() => exists
+      ? _reader.toExpression()
+      : refer('riverpod', 'package:riverpod_di:riverpod_di.dart');
 }

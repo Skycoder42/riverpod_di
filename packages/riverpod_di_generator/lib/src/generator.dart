@@ -13,10 +13,12 @@ import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
 import 'types.dart';
 
-class const RiverpodDiGenerator(final BuilderOptions options)
+class RiverpodDiGenerator(final BuilderOptions options)
     extends GeneratorForAnnotation<RiverDi>
     with DartGeneratorMixin {
   static const _refRef = Reference('ref');
+
+  late final providerResolver = ProviderResolver(options);
 
   @override
   Future<String> generateForAnnotatedElement(
@@ -31,15 +33,20 @@ class const RiverpodDiGenerator(final BuilderOptions options)
       );
     }
 
-    await ProviderResolver(options).resolveProviderFor(buildStep, element);
-
     final reader = RiverDiReader(annotation);
 
-    return createDartCode(_buildProvider(element, reader), scoped: false);
+    return createDartCode(
+      await _buildProvider(buildStep, element, reader),
+      scoped: false,
+    );
   }
 
-  Method _buildProvider(ClassElement element, RiverDiReader reader) {
-    final (body, isAsync) = _buildBody(element, reader);
+  Future<Method> _buildProvider(
+    BuildStep buildStep,
+    ClassElement element,
+    RiverDiReader reader,
+  ) async {
+    final (body, isAsync) = await _buildBody(buildStep, element, reader);
     return Method(
       (b) => b
         ..name = element.name!.camel
@@ -59,7 +66,11 @@ class const RiverpodDiGenerator(final BuilderOptions options)
     );
   }
 
-  (Expression, bool) _buildBody(ClassElement element, RiverDiReader reader) {
+  Future<(Expression, bool)> _buildBody(
+    BuildStep buildStep,
+    ClassElement element,
+    RiverDiReader reader,
+  ) async {
     final type = element.toReference();
 
     final annotated = element.constructors
@@ -86,15 +97,17 @@ class const RiverpodDiGenerator(final BuilderOptions options)
       );
     }
 
-    final posArgs = constructorOrMethod.formalParameters
-        .where((p) => p.isPositional)
-        .map(_watchReference)
-        .toList(growable: false);
+    final posArgs = [
+      for (final p in constructorOrMethod.formalParameters.where(
+        (p) => p.isPositional,
+      ))
+        await _watchReference(buildStep, p),
+    ];
     final namedArgs = {
       for (final p in constructorOrMethod.formalParameters.where(
         (p) => p.isNamed,
       ))
-        p.name!: _watchReference(p),
+        p.name!: await _watchReference(buildStep, p),
     };
 
     final noArgs = posArgs.isEmpty && namedArgs.isEmpty;
@@ -123,30 +136,33 @@ class const RiverpodDiGenerator(final BuilderOptions options)
     }
   }
 
-  Expression _watchReference(FormalParameterElement param) {
+  Future<Expression> _watchReference(
+    BuildStep buildStep,
+    FormalParameterElement param,
+  ) async {
     final fromReader = param.from;
-    final providerName =
-        fromReader.providerName(param) ?? _defaultProviderName(param);
+    final paramTypeElement = param.type.element;
+    final providerRef = switch (fromReader.provider(param)) {
+      null when paramTypeElement != null =>
+        await providerResolver.resolveProviderFor(
+          buildStep,
+          param,
+          paramTypeElement,
+        ),
+      TypeProviderRef(type: DartType(:final element?)) =>
+        await providerResolver.resolveProviderFor(buildStep, param, element),
+      FunctionProviderRef(:final element) =>
+        await providerResolver.resolveProviderFor(buildStep, param, element),
+      NamedProviderRef(:final name) => refer(name),
+      _ => throw InvalidGenerationSource(
+        'Unable to automatically detect provider '
+        'for parameter of type ${param.type}',
+        element: param,
+      ),
+    };
+
     final refMethod = fromReader.read ? 'read' : 'watch';
 
-    return _refRef.property(refMethod).call([
-      if (fromReader.notifier)
-        refer(providerName).property('notifier')
-      else
-        refer(providerName),
-    ]);
-  }
-
-  String _defaultProviderName(FormalParameterElement param) {
-    final baseName = param.type.element?.name;
-    if (baseName == null) {
-      throw InvalidGenerationSource(
-        'Cannot detect default provider name from parameter type '
-        '${param.type.getDisplayString()}.',
-        element: param,
-      );
-    }
-
-    return '${baseName}Provider'.camel;
+    return _refRef.property(refMethod).call([providerRef]);
   }
 }

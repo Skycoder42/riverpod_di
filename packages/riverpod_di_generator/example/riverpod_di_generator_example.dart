@@ -79,9 +79,14 @@ class ExternalNotifier extends _$ExternalNotifier {
   int build() => 42;
 }
 
+@riverpod
+Future<int> externalAsync(Ref ref) async => 42;
+
 @riverDi
 class FromExternal(
   @From(externalFunc) int func,
   @From(ExternalNotifier) int clazz,
   @From.notifier(ExternalNotifier) ExternalNotifier notifier,
+  @From.async(externalAsync, read: true) int async,
+  @From('externalFuncProvider') int named,
 );
