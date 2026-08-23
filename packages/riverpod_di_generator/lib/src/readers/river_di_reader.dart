@@ -1,7 +1,22 @@
-import 'package:code_builder/code_builder.dart';
-import 'package:dart_test_tools/code_gen.dart';
+import 'package:analyzer/dart/element/element.dart';
+import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 
+import 'riverpod_reader.dart';
+
+extension RiverDiX on ClassElement {
+  static const _typeChecker = TypeChecker.typeNamed(
+    RiverDi,
+    inPackage: 'riverpod_di',
+  );
+
+  RiverDiReader? get riverDi {
+    final annotation = _typeChecker.firstAnnotationOf(this);
+    final reader = ConstantReader(annotation);
+    return reader.isNull ? null : RiverDiReader(reader);
+  }
+}
+
 class RiverDiReader(final ConstantReader _reader) {
-  Expression get annotation => _reader.read('annotation').toExpression();
+  RiverpodReader get annotation => RiverpodReader(_reader.read('annotation'));
 }

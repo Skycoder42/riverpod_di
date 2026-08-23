@@ -7,28 +7,31 @@ import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
 
+import 'provider_resolver.dart';
 import 'readers/from_reader.dart';
 import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
 import 'types.dart';
 
-class const RiverpodDiGenerator()
+class const RiverpodDiGenerator(final BuilderOptions options)
     extends GeneratorForAnnotation<RiverDi>
     with DartGeneratorMixin {
   static const _refRef = Reference('ref');
 
   @override
-  String generateForAnnotatedElement(
+  Future<String> generateForAnnotatedElement(
     Element element,
     ConstantReader annotation,
     BuildStep buildStep,
-  ) {
+  ) async {
     if (element is! ClassElement) {
       throw InvalidGenerationSource(
         '@$RiverDi can only be used on classes',
         element: element,
       );
     }
+
+    await ProviderResolver(options).resolveProviderFor(buildStep, element);
 
     final reader = RiverDiReader(annotation);
 
@@ -40,7 +43,7 @@ class const RiverpodDiGenerator()
     return Method(
       (b) => b
         ..name = element.name!.camel
-        ..annotations.add(reader.annotation)
+        ..annotations.add(reader.annotation.toExpression())
         ..returns = isAsync
             ? Types.$FutureOr(element.toReference())
             : element.toReference()

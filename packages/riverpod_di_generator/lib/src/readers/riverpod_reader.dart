@@ -1,4 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
+import 'package:code_builder/code_builder.dart';
+import 'package:dart_test_tools/dart_test_tools.dart';
 import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 
@@ -9,12 +11,14 @@ extension RiverpodX on Element {
   );
 
   RiverpodReader? get riverpod {
-    final annotation = _typeChecker.firstAnnotationOf(_typeChecker);
+    final annotation = _typeChecker.firstAnnotationOf(this);
     final reader = ConstantReader(annotation);
     return reader.isNull ? null : RiverpodReader(reader);
   }
 }
 
 class RiverpodReader(final ConstantReader _reader) {
-  String get name => _reader.read('name').stringValue;
+  String? get name => _reader.peek('name')?.stringValue;
+
+  Expression toExpression() => _reader.toExpression();
 }

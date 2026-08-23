@@ -1,0 +1,1280 @@
+  0s compiling builders/aot
+  1s compiling builders/aot
+  2s compiling builders/aot
+  4s compiling builders/aot
+  5s compiling builders/aot
+  6s compiling builders/aot
+  7s compiling builders/aot
+  8s compiling builders/aot
+  9s compiling builders/aot
+  10s compiling builders/aot
+  11s compiling builders/aot
+  12s compiling builders/aot
+  13s compiling builders/aot
+  14s compiling builders/aot
+  15s compiling builders/aot
+  16s compiling builders/aot
+  17s compiling builders/aot
+  18s compiling builders/aot
+  19s compiling builders/aot
+  20s compiling builders/aot
+  22s compiling builders/aot
+  23s compiling builders/aot
+  24s compiling builders/aot
+  25s compiling builders/aot
+  26s compiling builders/aot
+  27s compiling builders/aot
+  28s compiling builders/aot
+  29s compiling builders/aot
+  30s compiling builders/aot
+  31s compiling builders/aot
+  32s compiling builders/aot
+  33s compiling builders/aot
+  34s compiling builders/aot
+  35s compiling builders/aot
+  35s compiling builders/aot
+  0s riverpod_di_generator on 1 input; example/riverpod_di_generator_example.dart
+  riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  Running RiverpodDiGenerator
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: ProviderConstructor => class ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/provider_constructor.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: ProviderConstructor == ProviderConstructor
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: Riverpod => final class Riverpod
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library dart:core
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: dart:core
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: Object == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: core == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: dart == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: RiverDi => class RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  FOUND: null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  NOPE-DI-NOPE. [@RiverDi get riverDi]
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: From => class From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/from.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: From == From
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == riverpod_di
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG1: Riverpod => final class Riverpod
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG2: library dart:core
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG3: dart:core
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG4: Object == RiverDi
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG5: core == null
+W riverpod_di_generator on example/riverpod_di_generator_example.dart:
+  SG6: dart == false
+  1s riverpod_di_generator on 1 input: 1 output
+  0s riverpod_generator on 10 inputs; example/riverpod_di_generator_example.dart
+  riverpod_generator on example/riverpod_di_generator_example.dart:
+  Running RiverpodGenerator - 1 of 2
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == Riverpod
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+  riverpod_generator on example/riverpod_di_generator_example.dart:
+  Running JsonGenerator - 2 of 2
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_di/src/river_di.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: RiverDi == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_di == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG2: library package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG3: package:riverpod_annotation/src/riverpod_annotation.dart
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG4: Riverpod == JsonPersist
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG5: riverpod_annotation == null
+W riverpod_generator on example/riverpod_di_generator_example.dart:
+  SG6: package == false
+  0s riverpod_generator on 10 inputs: 1 output, 9 no-op
+  0s source_gen:combining_builder on 10 inputs; example/riverpod_di_generator_example.dart
+  0s source_gen:combining_builder on 10 inputs: 1 output, 9 no-op
+  Built with build_runner/aot in 37s; wrote 3 outputs.
