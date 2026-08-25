@@ -8,10 +8,38 @@ import 'package:source_gen/source_gen.dart';
 import 'readers/river_di_reader.dart';
 import 'readers/riverpod_reader.dart';
 
+class ResolvedProvider({
+  required final Reference provider,
+  final bool isNotifier = false,
+  final bool isAsync = false,
+}) {
+  this {
+    if (isNotifier && isAsync) {
+      throw ArgumentError('Cannot set both isNotifier and isAsync true');
+    }
+  }
+
+  ResolvedProvider adjust({bool? isNotifier, bool? isAsync}) => .new(
+    provider: provider,
+    isNotifier: isNotifier ?? this.isNotifier,
+    isAsync: isAsync ?? this.isAsync,
+  );
+
+  Expression toExpression() {
+    if (isNotifier) {
+      return provider.property('notifier');
+    } else if (isAsync) {
+      return provider.property('future');
+    } else {
+      return provider;
+    }
+  }
+}
+
 class ProviderResolver(final BuilderOptions options) {
   late final riverpodOptions = BuildYamlOptions.fromMap(options.config);
 
-  Future<Expression> resolveProviderFor(
+  Future<ResolvedProvider> resolveProviderFor(
     BuildStep buildStep,
     Element target,
     Element element,
@@ -19,20 +47,23 @@ class ProviderResolver(final BuilderOptions options) {
     // case 1: annotated with RiverDi => automatic name derivation works fine
     final riverDi = element.riverDi;
     if (riverDi != null) {
-      return refer(_providerName(element, riverDi.annotation));
+      return .new(
+        provider: refer(_providerName(element, riverDi.annotation)),
+        isAsync: riverDi.async,
+      );
     }
 
-    // case 2: annotated with Riverpod (notifier) => try to resolve via riverpod
+    // case 2: annotated with Riverpod => try to resolve via riverpod
     final riverpod = element.riverpod;
     if (riverpod.exists) {
       final providerRef =
           await _resolveRiverpod(buildStep, target, element, riverpod) ??
           refer(_providerName(element, riverpod));
-      return providerRef.property('notifier');
+      return .new(provider: providerRef, isNotifier: true);
     }
 
     // case 3: unknown provider => uses empty fallbacks as best guess
-    return refer(_providerName(element, riverpod));
+    return .new(provider: refer(_providerName(element, riverpod)));
   }
 
   /// Simplified version of [GeneratorProviderDeclarationElement.providerName]

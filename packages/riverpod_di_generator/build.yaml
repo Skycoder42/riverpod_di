@@ -18,7 +18,9 @@ triggers:
   riverpod_di_generator:riverpod_di_generator:
     - annotation RiverDi
     - annotation riverDi
+    - annotation riverDiAsync
     - annotation riverDiSingleton
+    - annotation riverDiAsyncSingleton
 
 targets:
   $default:

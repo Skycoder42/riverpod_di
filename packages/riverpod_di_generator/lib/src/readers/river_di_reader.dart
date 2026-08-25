@@ -18,5 +18,7 @@ extension RiverDiX on Element {
 }
 
 class RiverDiReader(final ConstantReader _reader) {
+  bool get async => _reader.read('async').boolValue;
+
   RiverpodReader get annotation => RiverpodReader(_reader.read('annotation'));
 }

@@ -33,10 +33,10 @@ class RiverpodDiGenerator(final BuilderOptions options)
       );
     }
 
-    final reader = RiverDiReader(annotation);
+    final riverDi = RiverDiReader(annotation);
 
     return createDartCode(
-      await _buildProvider(buildStep, element, reader),
+      await _buildProvider(buildStep, element, riverDi),
       scoped: false,
     );
   }
@@ -44,14 +44,14 @@ class RiverpodDiGenerator(final BuilderOptions options)
   Future<Method> _buildProvider(
     BuildStep buildStep,
     ClassElement element,
-    RiverDiReader reader,
+    RiverDiReader riverDi,
   ) async {
-    final (body, isAsync) = await _buildBody(buildStep, element, reader);
+    final body = await _buildBody(buildStep, element, riverDi);
     return Method(
       (b) => b
         ..name = element.name!.camel
-        ..annotations.add(reader.annotation.toExpression())
-        ..returns = isAsync
+        ..annotations.add(riverDi.annotation.toExpression())
+        ..returns = riverDi.async
             ? Types.$FutureOr(element.toReference())
             : element.toReference()
         ..requiredParameters.add(
@@ -61,15 +61,16 @@ class RiverpodDiGenerator(final BuilderOptions options)
               ..type = Types.$Ref,
           ),
         )
+        ..modifier = riverDi.async ? .async : null
         ..lambda = true
         ..body = body.statement,
     );
   }
 
-  Future<(Expression, bool)> _buildBody(
+  Future<Expression> _buildBody(
     BuildStep buildStep,
     ClassElement element,
-    RiverDiReader reader,
+    RiverDiReader riverDi,
   ) async {
     final type = element.toReference();
 
@@ -91,26 +92,75 @@ class RiverpodDiGenerator(final BuilderOptions options)
 
     if (constructorOrMethod == null) {
       throw InvalidGenerationSource(
-        'Class has no primary or unnamed constructor! '
-        'Create one or annotate another with $ProviderConstructor.',
+        'Class has no primary or unnamed constructor!',
+        todo: 'Create one or annotate another with $ProviderConstructor.',
         element: element,
       );
+    }
+
+    final bool returnsAsync;
+    switch (constructorOrMethod.returnType) {
+      // async case 1: Not marked as async
+      case DartType(isDartAsyncFuture: true) ||
+              DartType(isDartAsyncFutureOr: true)
+          when !riverDi.async:
+        throw InvalidGenerationSource(
+          'Constructor returns Future or FutureOr, but is not marked as async!',
+          todo:
+              'Use @RiverDi(async: true) or @riverDiAsync or '
+              '@riverDiAsyncSingleton.',
+          element: constructorOrMethod,
+        );
+      // async case 2: Marked as async, but return type is not assignable
+      case InterfaceType(
+                isDartAsyncFuture: true,
+                typeArguments: [final inner],
+              ) ||
+              InterfaceType(
+                isDartAsyncFutureOr: true,
+                typeArguments: [final inner],
+              )
+          when !inner.isAssignableTo(element.thisType):
+        throw InvalidGenerationSource(
+          'Constructor returns an async value of $inner, '
+          'which is not assignable to ${element.thisType}',
+          todo:
+              'Change the return type to be assignable to ${element.thisType}',
+          element: constructorOrMethod,
+        );
+      // async case 3: Marked as async and return type matches => OK
+      case InterfaceType(isDartAsyncFuture: true) ||
+          InterfaceType(isDartAsyncFutureOr: true):
+        returnsAsync = true;
+      // sync case 1: Return type is not assignable
+      case final type when !type.isAssignableTo(element.thisType):
+        throw InvalidGenerationSource(
+          'Constructor returns a value of $type, '
+          'which is not assignable to ${element.thisType}',
+          todo:
+              'Change the return type to be assignable to ${element.thisType}',
+          element: constructorOrMethod,
+        );
+      // sync case 2: Return type matches => OK
+      case _:
+        returnsAsync = false;
     }
 
     final posArgs = [
       for (final p in constructorOrMethod.formalParameters.where(
         (p) => p.isPositional,
       ))
-        await _watchReference(buildStep, p),
+        await _watchReference(buildStep, riverDi, p),
     ];
     final namedArgs = {
       for (final p in constructorOrMethod.formalParameters.where(
         (p) => p.isNamed,
       ))
-        p.name!: await _watchReference(buildStep, p),
+        p.name!: await _watchReference(buildStep, riverDi, p),
     };
 
     final noArgs = posArgs.isEmpty && namedArgs.isEmpty;
+
     final invocation = switch (constructorOrMethod) {
       MethodElement(:final name?, isStatic: true) => type.property(name)(
         posArgs,
@@ -127,22 +177,17 @@ class RiverpodDiGenerator(final BuilderOptions options)
       _ => type.newInstance(posArgs, namedArgs),
     };
 
-    if (constructorOrMethod.returnType
-        case DartType(isDartAsyncFuture: true) ||
-            DartType(isDartAsyncFutureOr: true)) {
-      return (invocation, true);
-    } else {
-      return (invocation, false);
-    }
+    return returnsAsync ? invocation.awaited : invocation;
   }
 
   Future<Expression> _watchReference(
     BuildStep buildStep,
+    RiverDiReader riverDi,
     FormalParameterElement param,
   ) async {
     final fromReader = param.from;
     final paramTypeElement = param.type.element;
-    final providerRef = switch (fromReader.provider(param)) {
+    var resolvedProvider = switch (fromReader.provider(param)) {
       null when paramTypeElement != null =>
         await providerResolver.resolveProviderFor(
           buildStep,
@@ -153,7 +198,7 @@ class RiverpodDiGenerator(final BuilderOptions options)
         await providerResolver.resolveProviderFor(buildStep, param, element),
       FunctionProviderRef(:final element) =>
         await providerResolver.resolveProviderFor(buildStep, param, element),
-      NamedProviderRef(:final name) => refer(name),
+      NamedProviderRef(:final name) => ResolvedProvider(provider: refer(name)),
       _ => throw InvalidGenerationSource(
         'Unable to automatically detect provider '
         'for parameter of type ${param.type}',
@@ -161,8 +206,26 @@ class RiverpodDiGenerator(final BuilderOptions options)
       ),
     };
 
-    final refMethod = fromReader.read ? 'read' : 'watch';
+    resolvedProvider = resolvedProvider.adjust(
+      isNotifier: fromReader.notifier,
+      isAsync: fromReader.async,
+    );
 
-    return _refRef.property(refMethod).call([providerRef]);
+    if (resolvedProvider.isAsync && !riverDi.async) {
+      throw InvalidGenerationSource(
+        'Referenced provider is async, but the annotated class is not!',
+        todo:
+            'Use @RiverDi(async: true) or @riverDiAsync or '
+            '@riverDiAsyncSingleton.',
+        element: param,
+      );
+    }
+
+    final refMethod = (fromReader.read ?? false) ? 'read' : 'watch';
+
+    final result = _refRef.property(refMethod).call([
+      resolvedProvider.toExpression(),
+    ]);
+    return resolvedProvider.isAsync ? result.awaited : result;
   }
 }

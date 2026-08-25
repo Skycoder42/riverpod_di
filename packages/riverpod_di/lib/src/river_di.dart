@@ -6,6 +6,10 @@ const riverDi = RiverDi(riverpod);
 
 const riverDiSingleton = RiverDi(Riverpod(keepAlive: true));
 
+const riverDiAsync = RiverDi(riverpod, async: true);
+
+const riverDiAsyncSingleton = RiverDi(Riverpod(keepAlive: true), async: true);
+
 @immutable
 @Target({.classType})
-class const RiverDi(final Riverpod annotation);
+class const RiverDi(final Riverpod annotation, {final bool async = false});

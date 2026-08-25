@@ -24,11 +24,11 @@ class NamedProviderRef(final String name) extends ProviderRef;
 class FromReader(final ConstantReader _reader) {
   bool get exists => !_reader.isNull;
 
-  bool get notifier => _reader.peek('notifier')?.boolValue ?? false;
+  bool? get notifier => _reader.peek('notifier')?.boolValue;
 
-  bool get async => _reader.peek('async')?.boolValue ?? false;
+  bool? get async => _reader.peek('async')?.boolValue;
 
-  bool get read => _reader.peek('read')?.boolValue ?? false;
+  bool? get read => _reader.peek('read')?.boolValue;
 
   ProviderRef? provider([Element? annotation]) {
     if (!exists) {

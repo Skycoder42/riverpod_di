@@ -54,7 +54,7 @@ class const Competing.primary() {
   const factory internal() = Competing.primary;
 }
 
-@riverDi
+@riverDiAsync
 class FromFuture {
   const new _();
 
@@ -62,7 +62,7 @@ class FromFuture {
   static Future<FromFuture> createInstance() async => const ._();
 }
 
-@riverDi
+@riverDiAsync
 class FromFutureOr {
   const new _();
 
@@ -82,11 +82,19 @@ class ExternalNotifier extends _$ExternalNotifier {
 @riverpod
 Future<int> externalAsync(Ref ref) async => 42;
 
-@riverDi
+@riverpod
+class AsyncExternalNotifier extends _$AsyncExternalNotifier {
+  @override
+  Future<int> build() async => 42;
+}
+
+@riverDiAsyncSingleton
 class FromExternal(
   @From(externalFunc) int func,
-  @From(ExternalNotifier) int clazz,
+  @From(ExternalNotifier, read: true) int clazz,
   @From.notifier(ExternalNotifier) ExternalNotifier notifier,
   @From.async(externalAsync, read: true) int async,
+  @From.async(AsyncExternalNotifier) int asyncNotifier,
+  AsyncExternalNotifier auto,
   @From('externalFuncProvider') int named,
 );
