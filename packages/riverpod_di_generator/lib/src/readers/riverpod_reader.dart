@@ -1,8 +1,11 @@
+import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_test_tools/dart_test_tools.dart';
 import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
+
+import '../types.dart';
 
 extension RiverpodX on Element {
   static const _typeChecker = TypeChecker.typeNamed(
@@ -22,7 +25,48 @@ class RiverpodReader(final ConstantReader _reader) {
 
   String? get name => _reader.peek('name')?.stringValue;
 
-  Expression toExpression() => exists
-      ? _reader.toExpression()
-      : refer('riverpod', 'package:riverpod_di:riverpod_di.dart');
+  bool get keepAlive => _reader.peek('keepAlive')?.boolValue ?? false;
+
+  ExecutableElement? get retry =>
+      _reader.peek('retry')?.objectValue.toFunctionValue();
+
+  List<DartObject>? get dependencies =>
+      _reader.peek('dependencies')?.objectValue.toListValue();
+
+  /// Rebuilds the annotation from its fields instead of reviving it.
+  ///
+  /// Reviving turns [Riverpod.dependencies] into a list of raw constant
+  /// objects, which cannot be emitted as a literal. Only fields that differ
+  /// from their default are emitted.
+  Expression toExpression() {
+    if (!exists) {
+      return Types.$riverpod;
+    }
+
+    return Types.$Riverpod.newInstance(const [], {
+      if (keepAlive) 'keepAlive': literalTrue,
+      if (dependencies case final dependencies?)
+        'dependencies': literalList(dependencies.map(_dependencyExpression)),
+      if (retry case final retry?) 'retry': retry.toExpression(),
+      if (name case final name?) 'name': literalString(name),
+    });
+  }
+
+  Expression _dependencyExpression(DartObject dependency) {
+    final reader = ConstantReader(dependency);
+    if (reader.isType) {
+      return reader.typeValue.toReference(ignoreTypeArguments: true);
+    }
+
+    if (dependency.toFunctionValue() case final function?) {
+      return function.toExpression();
+    }
+
+    throw InvalidGenerationSource(
+      'Unable to convert $dependency into a provider reference.',
+      todo:
+          'Entries of $Riverpod.dependencies must be provider annotated '
+          'classes or functions.',
+    );
+  }
 }

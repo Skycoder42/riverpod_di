@@ -1,6 +1,8 @@
 import 'package:code_builder/code_builder.dart';
 
 sealed class Types {
+  static const _riverpodDiUrl = 'package:riverpod_di/riverpod_di.dart';
+
   static TypeReference $FutureOr([Reference? type]) => TypeReference((b) {
     b
       ..symbol = 'FutureOr'
@@ -11,6 +13,14 @@ sealed class Types {
   static final $Ref = TypeReference(
     (b) => b
       ..symbol = 'Ref'
-      ..url = 'package:riverpod_di:riverpod_di.dart',
+      ..url = _riverpodDiUrl,
   );
+
+  static final $Riverpod = TypeReference(
+    (b) => b
+      ..symbol = 'Riverpod'
+      ..url = _riverpodDiUrl,
+  );
+
+  static const $riverpod = Reference('riverpod', _riverpodDiUrl);
 }

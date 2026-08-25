@@ -18,6 +18,11 @@ class RiverpodDiGenerator(final BuilderOptions options)
     with DartGeneratorMixin {
   static const _refRef = Reference('ref');
 
+  static const _refTypeChecker = TypeChecker.typeNamed(
+    Ref,
+    inPackage: 'riverpod',
+  );
+
   late final providerResolver = ProviderResolver(options);
 
   @override
@@ -146,15 +151,18 @@ class RiverpodDiGenerator(final BuilderOptions options)
         returnsAsync = false;
     }
 
+    final positionalParams = constructorOrMethod.formalParameters
+        .where((p) => p.isPositional)
+        .toList(growable: false);
+    _validatePositionalDefaults(positionalParams);
+
     final posArgs = [
-      for (final p in constructorOrMethod.formalParameters.where(
-        (p) => p.isPositional,
-      ))
+      for (final p in positionalParams.where(_isInjected))
         await _watchReference(buildStep, riverDi, p),
     ];
     final namedArgs = {
       for (final p in constructorOrMethod.formalParameters.where(
-        (p) => p.isNamed,
+        (p) => p.isNamed && _isInjected(p),
       ))
         p.name!: await _watchReference(buildStep, riverDi, p),
     };
@@ -180,12 +188,43 @@ class RiverpodDiGenerator(final BuilderOptions options)
     return returnsAsync ? invocation.awaited : invocation;
   }
 
+  /// Whether [param] should be resolved to a provider and injected.
+  ///
+  /// A parameter with a default value is left to that default, unless it
+  /// explicitly opts back in via [From].
+  bool _isInjected(FormalParameterElement param) =>
+      !param.hasDefaultValue || param.from.exists;
+
+  /// Ensures skipped positional parameters are all trailing ones.
+  void _validatePositionalDefaults(List<FormalParameterElement> params) {
+    final firstSkipped = params.indexWhere((p) => !_isInjected(p));
+    if (firstSkipped == -1) {
+      return;
+    }
+
+    final lastInjected = params.lastIndexWhere(_isInjected);
+    if (lastInjected > firstSkipped) {
+      throw InvalidGenerationSource(
+        'Positional parameter has a default value, but a later positional '
+        'parameter is still injected.',
+        todo:
+            'Annotate it with $From to inject it as well, or move it behind '
+            'the injected parameters.',
+        element: params[firstSkipped],
+      );
+    }
+  }
+
   Future<Expression> _watchReference(
     BuildStep buildStep,
     RiverDiReader riverDi,
     FormalParameterElement param,
   ) async {
     final fromReader = param.from;
+    if (!fromReader.exists && _refTypeChecker.isExactlyType(param.type)) {
+      return _refRef;
+    }
+
     final paramTypeElement = param.type.element;
     var resolvedProvider = switch (fromReader.provider(param)) {
       null when paramTypeElement != null =>
