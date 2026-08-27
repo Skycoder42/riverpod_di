@@ -2,11 +2,13 @@ import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_test_tools/dart_test_tools.dart';
+import 'package:meta/meta.dart';
 import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 
 import '../types.dart';
 
+@internal
 extension RiverpodX on Element {
   static const _typeChecker = TypeChecker.typeNamed(
     Riverpod,
@@ -20,6 +22,8 @@ extension RiverpodX on Element {
   }
 }
 
+@internal
+// ignore: public_member_api_docs false positive
 class RiverpodReader(final ConstantReader _reader) {
   bool get exists => !_reader.isNull;
 

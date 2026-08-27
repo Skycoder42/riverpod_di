@@ -1,5 +1,7 @@
 import 'package:code_builder/code_builder.dart';
+import 'package:meta/meta.dart';
 
+@internal
 sealed class Types {
   static const _riverpodDiUrl = 'package:riverpod_di/riverpod_di.dart';
 

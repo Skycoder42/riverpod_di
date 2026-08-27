@@ -1,9 +1,11 @@
 import 'package:analyzer/dart/element/element.dart';
+import 'package:meta/meta.dart';
 import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'riverpod_reader.dart';
 
+@internal
 extension RiverDiX on Element {
   static const _typeChecker = TypeChecker.typeNamed(
     RiverDi,
@@ -17,6 +19,8 @@ extension RiverDiX on Element {
   }
 }
 
+@internal
+// ignore: public_member_api_docs false positive
 class RiverDiReader(final ConstantReader _reader) {
   RiverpodReader get annotation => RiverpodReader(_reader.read('annotation'));
 

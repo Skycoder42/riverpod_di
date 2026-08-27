@@ -3,6 +3,7 @@ import 'package:analyzer/dart/element/type.dart';
 import 'package:build/build.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_test_tools/code_gen.dart';
+import 'package:meta/meta.dart';
 import 'package:riverpod_di/riverpod_di.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
@@ -14,6 +15,8 @@ import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
 import 'types.dart';
 
+@internal
+// ignore: public_member_api_docs false positive
 class RiverpodDiGenerator(final BuilderOptions options)
     extends GeneratorForAnnotation<RiverDi>
     with DartGeneratorMixin {

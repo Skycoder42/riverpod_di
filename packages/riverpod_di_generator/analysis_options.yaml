@@ -1,5 +1,4 @@
 include: package:dart_test_tools/package.yaml
 linter:
   rules:
-    public_member_api_docs: false
     unnecessary_async: false

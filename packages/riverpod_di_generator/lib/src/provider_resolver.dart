@@ -2,12 +2,14 @@ import 'package:analyzer/dart/ast/ast.dart' hide Expression;
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:code_builder/code_builder.dart';
+import 'package:meta/meta.dart';
 import 'package:riverpod_analyzer_utils/riverpod_analyzer_utils.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'readers/river_di_reader.dart';
 import 'readers/riverpod_reader.dart';
 
+@internal
 class ResolvedProvider({
   required final Reference provider,
   final bool isNotifier = false,
@@ -36,6 +38,8 @@ class ResolvedProvider({
   }
 }
 
+@internal
+// ignore: public_member_api_docs false positive
 class ProviderResolver(final BuilderOptions options) {
   late final riverpodOptions = BuildYamlOptions.fromMap(options.config);
 
