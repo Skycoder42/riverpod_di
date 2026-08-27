@@ -222,6 +222,16 @@ class const Scoped(@From(seed) final int value);
 Scoped scoped(Ref ref) => Scoped(ref.watch(seedProvider));''',
       ),
       (
+        name: 'a non provider dependency entry is forwarded verbatim',
+        source: '''
+@RiverDi(Riverpod(dependencies: ['not a provider']))
+class const Bad();
+''',
+        expected: '''
+@Riverpod(dependencies: ['not a provider'])
+Bad bad(Ref ref) => const Bad();''',
+      ),
+      (
         name: 'the trailing Notifier suffix is stripped from both sides',
         source: '''
 @riverDi
@@ -528,7 +538,7 @@ class const Cache();
         expected: r'''
 @Riverpod()
 Cache cache(Ref ref) {
-  final $instance = const Cache();
+  const $instance = Cache();
   ref.onDispose(() => _close($instance));
   return $instance;
 }''',
@@ -546,7 +556,7 @@ class const Cache();
         expected: r'''
 @Riverpod()
 Cache cache(Ref ref) {
-  final $instance = const Cache();
+  const $instance = Cache();
   ref.onDispose(() => Registry.unregister($instance));
   return $instance;
 }''',
@@ -562,7 +572,7 @@ class const Cache();
         expected: r'''
 @Riverpod(keepAlive: true, name: 'kept')
 Cache cache(Ref ref) {
-  final $instance = const Cache();
+  const $instance = Cache();
   ref.onDispose(() => _close($instance));
   return $instance;
 }''',

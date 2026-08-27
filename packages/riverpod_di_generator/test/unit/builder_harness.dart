@@ -58,9 +58,10 @@ final class BuilderHarness(final TestReaderWriter _readerWriter) {
       // every time, so their failures show up again here. Keep only the ones
       // build_runner attributes to this input.
       onLog: (record) {
+        final message = _stripAnsi(record.message);
         if (record.level >= Level.SEVERE &&
-            record.message.contains('on ${inputId.path}:')) {
-          errors.add(record.message);
+            message.contains('on ${inputId.path}:')) {
+          errors.add(message);
         }
       },
     );
@@ -73,6 +74,19 @@ final class BuilderHarness(final TestReaderWriter _readerWriter) {
       errors: errors,
     );
   }
+
+  /// An ANSI hyperlink (`OSC 8`) or color code (`SGR`).
+  static final _ansiPattern = RegExp(r'\x1B(?:\][^\x1B]*\x1B\\|\[[0-9;]*m)');
+
+  /// Removes the terminal formatting from [message].
+  ///
+  /// `build_runner` renders the asset id a record belongs to as an ANSI
+  /// hyperlink whenever it writes to a terminal, which wraps the path in escape
+  /// sequences. Its records therefore look different depending on what stdout
+  /// of the test process is, and the path can only be read back out of them
+  /// once the escapes are gone.
+  static String _stripAnsi(String message) =>
+      message.replaceAll(_ansiPattern, '');
 
   /// Drops the header, the `part of` directive and the generator banner.
   static String _stripPreamble(String output) {

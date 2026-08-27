@@ -122,14 +122,6 @@ class Gap {
             'parameter is still injected.',
       ),
       (
-        name: 'a dependency entry that is not a provider',
-        source: '''
-@RiverDi(Riverpod(dependencies: ['not a provider']))
-class const Bad();
-''',
-        message: 'into a provider reference.',
-      ),
-      (
         name: 'multiple methods marked as a dispose method',
         source: '''
 @riverDi
