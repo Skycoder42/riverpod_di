@@ -413,6 +413,236 @@ class const Consumer(@From.async(ticks) final int value);
 FutureOr<Consumer> consumer(Ref ref) async =>
     Consumer(await ref.watch(ticksProvider.future));''',
       ),
+      (
+        name: 'an annotated instance method is torn off as the dispose hook',
+        source: '''
+@riverDi
+class Connection {
+  @disposeMethod
+  void close() {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Connection connection(Ref ref) {
+  final $instance = Connection();
+  ref.onDispose($instance.close);
+  return $instance;
+}''',
+      ),
+      (
+        name: 'an instance dispose method may have optional parameters',
+        source: '''
+@riverDi
+class Connection {
+  @disposeMethod
+  void close([int retries = 3]) {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Connection connection(Ref ref) {
+  final $instance = Connection();
+  ref.onDispose($instance.close);
+  return $instance;
+}''',
+      ),
+      (
+        name: 'an async instance dispose method is torn off unchanged',
+        source: '''
+@riverDi
+class Connection {
+  @disposeMethod
+  Future<void> close() async {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Connection connection(Ref ref) {
+  final $instance = Connection();
+  ref.onDispose($instance.close);
+  return $instance;
+}''',
+      ),
+      (
+        name: 'an annotated static method is handed the instance',
+        source: '''
+@riverDi
+class Session {
+  @disposeMethod
+  static void end(Session session) {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Session session(Ref ref) {
+  final $instance = Session();
+  ref.onDispose(() => Session.end($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'a static dispose method may have further optional parameters',
+        source: '''
+@riverDi
+class Session {
+  @disposeMethod
+  static void end(Session session, [int code = 0]) {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Session session(Ref ref) {
+  final $instance = Session();
+  ref.onDispose(() => Session.end($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'a static dispose method may take a supertype of the instance',
+        source: '''
+abstract interface class Closeable {}
+
+@riverDi
+class Session implements Closeable {
+  @disposeMethod
+  static void end(Closeable closeable) {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Session session(Ref ref) {
+  final $instance = Session();
+  ref.onDispose(() => Session.end($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'onDispose accepts a top level function',
+        source: '''
+void _close(Cache cache) {}
+
+@RiverDi(riverpod, onDispose: _close)
+class const Cache();
+''',
+        expected: r'''
+@Riverpod()
+Cache cache(Ref ref) {
+  final $instance = const Cache();
+  ref.onDispose(() => _close($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'onDispose accepts a static method of another class',
+        source: '''
+class Registry {
+  static void unregister(Cache cache) {}
+}
+
+@RiverDi(riverpod, onDispose: Registry.unregister)
+class const Cache();
+''',
+        expected: r'''
+@Riverpod()
+Cache cache(Ref ref) {
+  final $instance = const Cache();
+  ref.onDispose(() => Registry.unregister($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'a dispose hook combines with the forwarded Riverpod annotation',
+        source: '''
+void _close(Cache cache) {}
+
+@RiverDi(Riverpod(keepAlive: true, name: 'kept'), onDispose: _close)
+class const Cache();
+''',
+        expected: r'''
+@Riverpod(keepAlive: true, name: 'kept')
+Cache cache(Ref ref) {
+  final $instance = const Cache();
+  ref.onDispose(() => _close($instance));
+  return $instance;
+}''',
+      ),
+      (
+        name: 'dependencies are injected into the instance that is disposed',
+        source: '''
+@riverDi
+class const Leaf();
+
+@riverDi
+class Owner {
+  new(Leaf leaf);
+
+  @disposeMethod
+  void dispose() {}
+}
+''',
+        expected: r'''
+@Riverpod()
+Leaf leaf(Ref ref) => const Leaf();
+
+@Riverpod()
+Owner owner(Ref ref) {
+  final $instance = Owner(ref.watch(leafProvider));
+  ref.onDispose($instance.dispose);
+  return $instance;
+}''',
+      ),
+      (
+        name: 'an async provider registers the awaited instance',
+        source: '''
+@riverDiAsync
+class Worker {
+  const new _();
+
+  @providerConstructor
+  static Future<Worker> spawn() async => const Worker._();
+
+  @disposeMethod
+  void stop() {}
+}
+''',
+        expected: r'''
+@Riverpod()
+FutureOr<Worker> worker(Ref ref) async {
+  final $instance = await Worker.spawn();
+  ref.onDispose($instance.stop);
+  return $instance;
+}''',
+      ),
+      (
+        name: 'an unannotated method is not treated as a dispose hook',
+        source: '''
+@riverDi
+class const Plain() {
+  void dispose() {}
+
+  static void close(Plain plain) {}
+}
+''',
+        expected: '''
+@Riverpod()
+Plain plain(Ref ref) => const Plain();''',
+      ),
+      (
+        name: 'an inherited dispose method is not picked up',
+        source: '''
+class Base {
+  @disposeMethod
+  void dispose() {}
+}
+
+@riverDi
+class Derived extends Base;
+''',
+        expected: '''
+@Riverpod()
+Derived derived(Ref ref) => Derived();''',
+      ),
     ],
     (data) async {
       final result = await harness.generate(data.source);

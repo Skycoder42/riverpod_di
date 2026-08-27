@@ -98,3 +98,25 @@ class FromExternal(
   AsyncExternalNotifier auto,
   @From('externalFuncProvider') int named,
 );
+
+@riverDi
+class Dispose1 {
+  @disposeMethod
+  void dispose() {}
+}
+
+@riverDi
+class Dispose2 {
+  @disposeMethod
+  static void dispose(Dispose2 _) {}
+
+  static void disposeOther(Dispose3 _) {}
+}
+
+@RiverDi(riverpod, onDispose: Dispose2.disposeOther)
+class Dispose3;
+
+void _dispose4(Dispose4 _) {}
+
+@RiverDi(riverpod, onDispose: _dispose4)
+class Dispose4;

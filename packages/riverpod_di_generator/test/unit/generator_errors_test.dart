@@ -129,6 +129,120 @@ class const Bad();
 ''',
         message: 'into a provider reference.',
       ),
+      (
+        name: 'multiple methods marked as a dispose method',
+        source: '''
+@riverDi
+class Two {
+  @disposeMethod
+  void close() {}
+
+  @disposeMethod
+  void shutdown() {}
+}
+''',
+        message: 'Cannot have more then a single method marked as @dispose.',
+      ),
+      (
+        name: 'a dispose method next to an onDispose parameter',
+        source: '''
+void _close(Both both) {}
+
+@RiverDi(riverpod, onDispose: _close)
+class Both {
+  @disposeMethod
+  void close() {}
+}
+''',
+        message:
+            'Cannot have a method marked as @dispose and an onDispose '
+            'parameter to @RiverDi.',
+      ),
+      (
+        name: 'an instance dispose method with a required parameter',
+        source: '''
+@riverDi
+class Bad {
+  @disposeMethod
+  void close(int code) {}
+}
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
+      (
+        name: 'a static dispose method without parameters',
+        source: '''
+@riverDi
+class Bad {
+  @disposeMethod
+  static void close() {}
+}
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
+      (
+        name: 'a static dispose method that does not take the instance',
+        source: '''
+@riverDi
+class Bad {
+  @disposeMethod
+  static void close(int code) {}
+}
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
+      (
+        name: 'a static dispose method with a second required parameter',
+        source: '''
+@riverDi
+class Bad {
+  @disposeMethod
+  static void close(Bad bad, int code) {}
+}
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
+      (
+        name:
+            'a static dispose method taking the instance as a named '
+            'parameter',
+        source: '''
+@riverDi
+class Bad {
+  @disposeMethod
+  static void close({required Bad bad}) {}
+}
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
+      (
+        name: 'an onDispose function that does not take the instance',
+        source: '''
+void _close(int code) {}
+
+@RiverDi(riverpod, onDispose: _close)
+class const Bad();
+''',
+        message:
+            'A dispose method must be an instance method or take the instance '
+            'as first positional parameter and have no other required '
+            'parameters.',
+      ),
     ],
     (data) async {
       final result = await harness.generate(data.source);

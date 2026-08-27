@@ -13,6 +13,7 @@ import '../../example/async_chain_example.dart' as async_chain;
 import '../../example/constructor_shapes_example.dart' as shapes;
 import '../../example/cross_library_deps.dart' as deps;
 import '../../example/cross_library_example.dart' as cross;
+import '../../example/dispose_example.dart' as dispose;
 import '../../example/interfaces_example.dart' as interfaces;
 import '../../example/naming_example.dart' as naming;
 import '../../example/riverpod_di_generator_example.dart' as base;
@@ -48,6 +49,10 @@ void main() {
       expect(container.read(base.factoryProvider), isNotNull);
       expect(container.read(base.fromMethodProvider), isNotNull);
       expect(container.read(base.competingProvider), isNotNull);
+      expect(container.read(base.dispose1Provider), isNotNull);
+      expect(container.read(base.dispose2Provider), isNotNull);
+      expect(container.read(base.dispose3Provider), isNotNull);
+      expect(container.read(base.dispose4Provider), isNotNull);
     });
 
     test('a dependency is the instance its own provider holds', () {
@@ -238,6 +243,95 @@ void main() {
 
       expect(supervisor.logger, same(supervisor.scheduler.logger));
       expect(supervisor.logger, same(supervisor.scheduler.clock.logger));
+    });
+  });
+
+  group('dispose', () {
+    late ProviderContainer ownContainer;
+
+    setUp(() {
+      dispose.disposed.clear();
+      // A container of its own, so that disposing it does not race the tear
+      // down of the shared one.
+      ownContainer = ProviderContainer.test();
+    });
+
+    test('an annotated instance method runs on dispose', () {
+      final connection = ownContainer.read(dispose.connectionProvider);
+
+      expect(dispose.disposed, isEmpty);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(connection)));
+    });
+
+    test('an annotated static method is handed the instance', () {
+      final session = ownContainer.read(dispose.sessionProvider);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(session)));
+    });
+
+    test('an optional parameter of a static method keeps its default', () {
+      ownContainer
+        ..read(dispose.sessionProvider)
+        ..dispose();
+
+      expect(dispose.disposed, contains(42));
+    });
+
+    test('a disposed instance still holds its injected dependencies', () {
+      final session = ownContainer.read(dispose.sessionProvider);
+
+      expect(
+        session.connection,
+        same(ownContainer.read(dispose.connectionProvider)),
+      );
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(session.connection)));
+    });
+
+    test('an onDispose function runs on dispose', () {
+      final cache = ownContainer.read(dispose.cacheProvider);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(cache)));
+    });
+
+    test('an onDispose static method runs on dispose', () {
+      final registry = ownContainer.read(dispose.registryProvider);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(registry)));
+    });
+
+    test('an async provider disposes the awaited instance', () async {
+      final subscription = ownContainer.listen(
+        dispose.workerProvider.future,
+        (_, _) {},
+      );
+      final worker = await subscription.read();
+
+      expect(dispose.disposed, isEmpty);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(worker)));
+    });
+
+    test('a keepAlive provider is disposed with its container', () {
+      final pool = ownContainer.read(dispose.poolProvider);
+
+      expect(dispose.disposed, isEmpty);
+
+      ownContainer.dispose();
+
+      expect(dispose.disposed, contains(same(pool)));
     });
   });
 }

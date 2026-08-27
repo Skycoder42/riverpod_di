@@ -8,6 +8,7 @@ import 'package:source_gen/source_gen.dart';
 import 'package:source_helper/source_helper.dart';
 
 import 'provider_resolver.dart';
+import 'readers/dispose_method_reader.dart';
 import 'readers/from_reader.dart';
 import 'readers/provider_constructor_reader.dart';
 import 'readers/river_di_reader.dart';
@@ -17,6 +18,7 @@ class RiverpodDiGenerator(final BuilderOptions options)
     extends GeneratorForAnnotation<RiverDi>
     with DartGeneratorMixin {
   static const _refRef = Reference('ref');
+  static const _instanceRef = Reference(r'$instance');
 
   static const _refTypeChecker = TypeChecker.typeNamed(
     Ref,
@@ -51,28 +53,113 @@ class RiverpodDiGenerator(final BuilderOptions options)
     ClassElement element,
     RiverDiReader riverDi,
   ) async {
-    final body = await _buildBody(buildStep, element, riverDi);
-    return Method(
-      (b) => b
-        ..name = element.name!.camel
-        ..annotations.add(riverDi.annotation.toExpression())
-        ..returns = riverDi.async
-            ? Types.$FutureOr(element.toReference())
-            : element.toReference()
-        ..requiredParameters.add(
-          Parameter(
-            (b) => b
-              ..name = _refRef.symbol!
-              ..type = Types.$Ref,
-          ),
-        )
-        ..modifier = riverDi.async ? .async : null
-        ..lambda = true
-        ..body = body.statement,
+    final methodBuilder = MethodBuilder()
+      ..name = element.name!.camel
+      ..annotations.add(riverDi.annotation.toExpression())
+      ..returns = riverDi.async
+          ? Types.$FutureOr(element.toReference())
+          : element.toReference()
+      ..requiredParameters.add(
+        Parameter(
+          (b) => b
+            ..name = _refRef.symbol!
+            ..type = Types.$Ref,
+        ),
+      )
+      ..modifier = riverDi.async ? .async : null;
+
+    final (invocation, isConst) = await _buildInvocation(
+      buildStep,
+      element,
+      riverDi,
     );
+    final disposeRef = _getDisposeRef(element, riverDi);
+
+    if (disposeRef == null) {
+      methodBuilder
+        ..lambda = true
+        ..body = invocation.statement;
+    } else {
+      methodBuilder.body = Block.of([
+        if (isConst)
+          declareConst(_instanceRef.symbol!).assign(invocation).statement
+        else
+          declareFinal(_instanceRef.symbol!).assign(invocation).statement,
+        _refRef.property('onDispose').call([disposeRef]).statement,
+        _instanceRef.returned.statement,
+      ]);
+    }
+
+    return methodBuilder.build();
   }
 
-  Future<Expression> _buildBody(
+  Expression? _getDisposeRef(ClassElement element, RiverDiReader riverDi) {
+    // find annotated dispose methods
+    final disposeMethods = element.methods
+        .where((m) => m.hasDisposeMethod)
+        .toList(growable: false);
+    if (disposeMethods.length > 1) {
+      throw InvalidGenerationSource(
+        'Cannot have more then a single method marked as @dispose.',
+        todo: 'Remove @dispose from all but one method.',
+        element: disposeMethods[1],
+      );
+    }
+
+    // check for class annotation method
+    ExecutableElement? disposeMethod = disposeMethods.firstOrNull;
+    if (riverDi.onDispose case final onDispose?) {
+      if (disposeMethod != null) {
+        throw InvalidGenerationSource(
+          'Cannot have a method marked as @dispose '
+          'and an onDispose parameter to @RiverDi.',
+          todo: 'Remove @dispose from the method or the onDispose parameter.',
+          element: disposeMethods.first,
+        );
+      } else {
+        disposeMethod = onDispose;
+      }
+    }
+    // resolve method type for invocation
+    return switch (disposeMethod) {
+      // none => null
+      null => null,
+
+      // non static instance methods must have no required parameters
+      MethodElement(isStatic: false, :final name?, :final formalParameters)
+          when !formalParameters.any((p) => p.isRequired) =>
+        _instanceRef.property(name),
+
+      // static or top level function
+      // must take a single required param of the class type
+      //
+      ExecutableElement(
+        isStatic: true,
+        formalParameters: [
+          FormalParameterElement(:final type, isRequiredPositional: true),
+          ...final others,
+        ],
+      )
+          when element.thisType.isAssignableTo(type) &&
+              !others.any((p) => p.isRequired) =>
+        Method(
+          (b) => b
+            ..lambda = true
+            ..body = disposeMethod!.toExpression().call(const [
+              _instanceRef,
+            ]).code,
+        ).closure,
+
+      // all others => unsupported
+      _ => throw InvalidGenerationSource(
+        'A dispose method must be an instance method or take the instance '
+        'as first positional parameter and have no other required parameters.',
+        element: disposeMethod,
+      ),
+    };
+  }
+
+  Future<(Expression, bool)> _buildInvocation(
     BuildStep buildStep,
     ClassElement element,
     RiverDiReader riverDi,
@@ -169,23 +256,26 @@ class RiverpodDiGenerator(final BuilderOptions options)
 
     final noArgs = posArgs.isEmpty && namedArgs.isEmpty;
 
-    final invocation = switch (constructorOrMethod) {
-      MethodElement(:final name?, isStatic: true) => type.property(name)(
-        posArgs,
-        namedArgs,
+    final (invocation, isConst) = switch (constructorOrMethod) {
+      MethodElement(:final name?, isStatic: true) => (
+        type.property(name)(posArgs, namedArgs),
+        false,
       ),
       ConstructorElement(name: final name?, isConst: true)
           when noArgs && name != 'new' =>
-        type.constInstanceNamed(name, const []),
-      ConstructorElement(isConst: true) when noArgs => type.constInstance(
-        const [],
+        (type.constInstanceNamed(name, const []), true),
+      ConstructorElement(isConst: true) when noArgs => (
+        type.constInstance(const []),
+        true,
       ),
-      ConstructorElement(name: final name?) when name != 'new' =>
+      ConstructorElement(name: final name?) when name != 'new' => (
         type.newInstanceNamed(name, posArgs, namedArgs),
-      _ => type.newInstance(posArgs, namedArgs),
+        false,
+      ),
+      _ => (type.newInstance(posArgs, namedArgs), false),
     };
 
-    return returnsAsync ? invocation.awaited : invocation;
+    return (returnsAsync ? invocation.awaited : invocation, isConst);
   }
 
   /// Whether [param] should be resolved to a provider and injected.
