@@ -1,11 +1,11 @@
-name: riverpod_di_workspace
+name: riverpod_injected_workspace
 
 environment:
   sdk: ^3.13.0
 
 workspace:
-  - packages/riverpod_di
-  - packages/riverpod_di_generator
+  - packages/riverpod_injected
+  - packages/riverpod_injected_generator
 
 dev_dependencies:
   dart_pre_commit: ^6.1.4

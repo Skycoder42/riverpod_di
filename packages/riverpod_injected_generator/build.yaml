@@ -1,0 +1,32 @@
+builders:
+  riverpod_injected_generator:
+    import: package:riverpod_injected_generator/riverpod_injected_generator.dart
+    builder_factories:
+      - riverpodDiBuilder
+    build_extensions:
+      .dart:
+        - .di.g.dart
+    auto_apply: dependents
+    build_to: source
+    runs_before:
+      - riverpod_generator:riverpod_generator
+    defaults:
+      options:
+        run_only_if_triggered: true
+
+triggers:
+  riverpod_injected_generator:riverpod_injected_generator:
+    - annotation RiverDi
+    - annotation riverDi
+    - annotation riverDiAsync
+    - annotation riverDiSingleton
+    - annotation riverDiAsyncSingleton
+
+targets:
+  $default:
+    builders:
+      riverpod_injected_generator:
+        enabled: true
+        generate_for:
+          include:
+            - example/**

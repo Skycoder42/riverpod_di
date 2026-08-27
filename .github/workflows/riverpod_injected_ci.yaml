@@ -1,0 +1,34 @@
+name: CI/CD for riverpod_injected
+
+on:
+  workflow_dispatch:
+  push: &trigger
+    branches:
+      - "**"
+    paths:
+      - "packages/riverpod_injected/**"
+      - ".github/workflows/riverpod_injected_ci.yaml"
+      - ".github/workflows/riverpod_injected_cd.yaml"
+  pull_request: *trigger
+
+jobs:
+  ci:
+    name: CI
+    uses: Skycoder42/dart_test_tools/.github/workflows/dart.yml@main
+    with:
+      workingDirectory: packages/riverpod_injected
+      buildRunner: false
+      unitTestPaths: ""
+
+  cd:
+    name: CD
+    uses: Skycoder42/dart_test_tools/.github/workflows/release.yml@main
+    needs:
+      - ci
+    permissions:
+      contents: write
+      actions: write
+    with:
+      workingDirectory: packages/riverpod_injected
+      tagPrefix: riverpod_injected-v
+      publishWorkflow: riverpod_injected_cd.yaml

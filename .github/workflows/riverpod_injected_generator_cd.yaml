@@ -1,0 +1,21 @@
+name: CD - Publish riverpod_injected_generator to pub.dev
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: The version to be deployed
+        required: true
+
+jobs:
+  publish:
+    name: Publish
+    uses: Skycoder42/dart_test_tools/.github/workflows/publish.yml@main
+    permissions:
+      id-token: write
+    with:
+      tagPrefix: riverpod_injected_generator-v
+      version: ${{ inputs.version }}
+      workingDirectory: packages/riverpod_injected_generator
+      buildRunner: true
