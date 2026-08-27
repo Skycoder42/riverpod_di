@@ -41,32 +41,8 @@ class RiverpodReader(final ConstantReader _reader) {
   Expression toExpression() {
     if (!exists) {
       return Types.$riverpod;
+    } else {
+      return _reader.toExpression();
     }
-
-    return Types.$Riverpod.newInstance(const [], {
-      if (keepAlive) 'keepAlive': literalTrue,
-      if (dependencies case final dependencies?)
-        'dependencies': literalList(dependencies.map(_dependencyExpression)),
-      if (retry case final retry?) 'retry': retry.toExpression(),
-      if (name case final name?) 'name': literalString(name),
-    });
-  }
-
-  Expression _dependencyExpression(DartObject dependency) {
-    final reader = ConstantReader(dependency);
-    if (reader.isType) {
-      return reader.typeValue.toReference(ignoreTypeArguments: true);
-    }
-
-    if (dependency.toFunctionValue() case final function?) {
-      return function.toExpression();
-    }
-
-    throw InvalidGenerationSource(
-      'Unable to convert $dependency into a provider reference.',
-      todo:
-          'Entries of $Riverpod.dependencies must be provider annotated '
-          'classes or functions.',
-    );
   }
 }
