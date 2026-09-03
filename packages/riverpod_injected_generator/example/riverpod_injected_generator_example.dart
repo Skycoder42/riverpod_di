@@ -113,10 +113,10 @@ class Dispose2 {
   static void disposeOther(Dispose3 _) {}
 }
 
-@RiverDi(riverpod, onDispose: Dispose2.disposeOther)
+@RiverDi(onDispose: Dispose2.disposeOther)
 class Dispose3;
 
 void _dispose4(Dispose4 _) {}
 
-@RiverDi(riverpod, onDispose: _dispose4)
+@RiverDi(onDispose: _dispose4)
 class Dispose4;

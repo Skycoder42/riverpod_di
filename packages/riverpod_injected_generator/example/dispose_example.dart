@@ -41,13 +41,13 @@ class Session {
 /// A class that cannot hold the annotation itself — here a `const` class with
 /// no body — names its teardown on `@RiverDi` instead. The shape rules are the
 /// same as for a static `@disposeMethod`.
-@RiverDi(riverpod, onDispose: _closeCache)
+@RiverDi(onDispose: _closeCache)
 class const Cache();
 
 void _closeCache(Cache cache) => disposed.add(cache);
 
 /// `onDispose` also accepts a static method, of this or of any other class.
-@RiverDi(riverpod, onDispose: Registry.unregister)
+@RiverDi(onDispose: Registry.unregister)
 class Registry {
   static void unregister(Registry registry) => disposed.add(registry);
 }

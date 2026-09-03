@@ -9,4 +9,5 @@ workspace:
 
 dev_dependencies:
   dart_pre_commit: ^6.1.4
-  dart_test_tools: ^7.3.1
+  dart_test_tools: ^7.3.2
+  riverpod_lint: ^3.1.8

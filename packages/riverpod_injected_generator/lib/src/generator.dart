@@ -58,7 +58,7 @@ class RiverpodDiGenerator(final BuilderOptions options)
   ) async {
     final methodBuilder = MethodBuilder()
       ..name = element.name!.camel
-      ..annotations.add(riverDi.annotation.toExpression())
+      ..annotations.add(_buildAnnotation(riverDi))
       ..returns = riverDi.async
           ? Types.$FutureOr(element.toReference())
           : element.toReference()
@@ -94,6 +94,26 @@ class RiverpodDiGenerator(final BuilderOptions options)
     }
 
     return methodBuilder.build();
+  }
+
+  Expression _buildAnnotation(RiverDiReader riverDi) =>
+      Types.$Riverpod.newInstance([], {
+        if (riverDi.name case final name?) 'name': literalString(name),
+        if (riverDi.keepAlive) 'keepAlive': literalTrue,
+        if (riverDi.retry case final retry?) 'retry': retry.toReference(),
+        if (riverDi.dependencies case final dependencies?)
+          'dependencies': literalList(dependencies.map(_mapDependency)),
+      });
+
+  Expression _mapDependency(ConstantReader dependency) {
+    if (dependency.isType) {
+      final typeElement = dependency.typeValue.element;
+      if (typeElement != null && typeElement.hasRiverDi) {
+        return refer(typeElement.name!.camel);
+      }
+    }
+
+    return dependency.toExpression();
   }
 
   Expression? _getDisposeRef(ClassElement element, RiverDiReader riverDi) {

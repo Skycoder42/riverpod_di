@@ -191,7 +191,7 @@ FutureOr<Kept> kept(Ref ref) async => const Kept();''',
       (
         name: 'explicit provider name is forwarded',
         source: '''
-@RiverDi(Riverpod(name: 'renamed'))
+@RiverDi(name: 'renamed')
 class const Named();
 
 @riverDi
@@ -212,19 +212,17 @@ int seed(Ref ref) => 42;
 
 Duration? retryOnce(int count, Object error) => null;
 
-@RiverDi(
-  Riverpod(keepAlive: true, retry: retryOnce, dependencies: [seed]),
-)
+@RiverDi(keepAlive: true, retry: retryOnce, dependencies: [seed])
 class const Scoped(@From(seed) final int value);
 ''',
         expected: '''
-@Riverpod(keepAlive: true, dependencies: [seed], retry: retryOnce)
+@Riverpod(keepAlive: true, retry: retryOnce, dependencies: [seed])
 Scoped scoped(Ref ref) => Scoped(ref.watch(seedProvider));''',
       ),
       (
         name: 'a non provider dependency entry is forwarded verbatim',
         source: '''
-@RiverDi(Riverpod(dependencies: ['not a provider']))
+@RiverDi(dependencies: ['not a provider'])
 class const Bad();
 ''',
         expected: '''
@@ -532,7 +530,7 @@ Session session(Ref ref) {
         source: '''
 void _close(Cache cache) {}
 
-@RiverDi(riverpod, onDispose: _close)
+@RiverDi(onDispose: _close)
 class const Cache();
 ''',
         expected: r'''
@@ -550,7 +548,7 @@ class Registry {
   static void unregister(Cache cache) {}
 }
 
-@RiverDi(riverpod, onDispose: Registry.unregister)
+@RiverDi(onDispose: Registry.unregister)
 class const Cache();
 ''',
         expected: r'''
@@ -566,7 +564,7 @@ Cache cache(Ref ref) {
         source: '''
 void _close(Cache cache) {}
 
-@RiverDi(Riverpod(keepAlive: true, name: 'kept'), onDispose: _close)
+@RiverDi(keepAlive: true, name: 'kept', onDispose: _close)
 class const Cache();
 ''',
         expected: r'''

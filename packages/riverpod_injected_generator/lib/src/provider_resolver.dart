@@ -52,28 +52,26 @@ class ProviderResolver(final BuilderOptions options) {
     final riverDi = element.riverDi;
     if (riverDi != null) {
       return .new(
-        provider: refer(_providerName(element, riverDi.annotation)),
+        provider: refer(riverDi.name ?? _providerName(element)),
         isAsync: riverDi.async,
       );
     }
 
     // case 2: annotated with Riverpod => try to resolve via riverpod
     final riverpod = element.riverpod;
-    if (riverpod.exists) {
+    if (riverpod != null) {
       final providerRef =
           await _resolveRiverpod(buildStep, target, element, riverpod) ??
-          refer(_providerName(element, riverpod));
+          refer(riverpod.name ?? _providerName(element));
       return .new(provider: providerRef, isNotifier: true);
     }
 
-    // case 3: unknown provider => uses empty fallbacks as best guess
-    return .new(provider: refer(_providerName(element, riverpod)));
+    // case 3: unknown provider => best guess
+    return .new(provider: refer(_providerName(element)));
   }
 
   /// Simplified version of [GeneratorProviderDeclarationElement.providerName]
-  String _providerName(Element element, RiverpodReader riverpod) {
-    if (riverpod.name case final name?) return name;
-
+  String _providerName(Element element) {
     final prefix = riverpodOptions.providerNamePrefix;
     final suffix = riverpodOptions.providerNameSuffix;
 
@@ -103,7 +101,10 @@ class ProviderResolver(final BuilderOptions options) {
     Element element,
     RiverpodReader riverpod,
   ) async {
-    final astNode = await buildStep.resolver.astNodeFor(element.firstFragment);
+    final astNode = await buildStep.resolver.astNodeFor(
+      element.firstFragment,
+      resolve: true,
+    );
     if (astNode is! Declaration) {
       return null;
     }

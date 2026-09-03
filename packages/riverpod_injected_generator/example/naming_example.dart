@@ -19,7 +19,7 @@ class const SettingsNotifier();
 class const SettingsConsumer(final SettingsNotifier settings);
 
 /// An explicit name wins over the derived one.
-@RiverDi(Riverpod(name: 'clockProvider'))
+@RiverDi(name: 'clockProvider')
 class const Clock();
 
 /// And consumers follow it.
@@ -40,7 +40,5 @@ Duration? _retryTwice(int retryCount, Object error) =>
 
 /// `retry` and `dependencies` are forwarded to the generated annotation
 /// verbatim.
-@RiverDi(
-  Riverpod(keepAlive: true, retry: _retryTwice, dependencies: [appVersion]),
-)
+@RiverDi(keepAlive: true, retry: _retryTwice, dependencies: [appVersion])
 class const Scoped(@From(appVersion) final String version);
